@@ -4,217 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenin - ROM Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --github-blue: #58a6ff;
-            --github-gray: #8b949e;
-            --github-bg: #0d1117;
-            --github-text: #c9d1d9;
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #e0e0e0;
+            --text-light: #b0b0b0;
         }
 
         body {
-            font-family: 'Roboto Flex', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--github-bg);
-            color: var(--github-text);
-            min-height: 100vh;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
 
-        /* GitHub-style menu with animation */
-        .github-menu {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 6px;
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        .menu-line {
-            height: 2px;
-            width: 100%;
-            background: var(--github-gray);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .github-menu:hover .menu-line {
-            background: var(--github-blue);
-        }
-
-        /* Menu panel that slides in */
-        .menu-panel {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100vh;
-            background: var(--github-bg);
-            border-right: 1px solid rgba(240,246,252,0.1);
-            z-index: 999;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 60px 20px 20px;
-        }
-
-        .menu-panel.open {
-            transform: translateX(300px);
-        }
-
-        .menu-item {
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .menu-item:hover {
-            background: rgba(88, 166, 255, 0.1);
-        }
-
-        /* Animation when menu opens */
-        .github-menu.active .menu-line:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
-        }
-
-        .github-menu.active .menu-line:nth-child(2) {
-            opacity: 0;
-        }
-
-        .github-menu.active .menu-line:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
-        }
-
-        /* Rest of your content */
         header {
             text-align: center;
-            padding: 2rem;
-            padding-top: 4rem;
+            margin-bottom: 3rem;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: var(--github-text);
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        section {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 6px;
-            border: 1px solid rgba(240,246,252,0.1);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         h2 {
-            color: var(--github-blue);
-            margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(58, 134, 255, 0.3), transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         a {
-            color: var(--github-blue);
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            padding: 0.5rem 0;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: var(--secondary);
+            transform: translateY(-2px);
         }
 
         .icon {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
 
         @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
             h1 {
                 font-size: 2rem;
+            }
+            
+            .links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Hi, I'm Zenin</h1>
+        </header>
 
-    <!-- GitHub-style menu with animation -->
-    <div class="github-menu" id="githubMenu">
-        <div class="menu-line"></div>
-        <div class="menu-line"></div>
-        <div class="menu-line"></div>
-    </div>
-
-    <!-- Menu panel that slides in -->
-    <div class="menu-panel" id="menuPanel">
-        <div class="menu-item" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
-            View YAAP Project
-        </div>
-        <div class="menu-item" onclick="window.open('https://github.com/zenin1504', '_blank')">
-            My GitHub Profile
-        </div>
-        <div class="menu-item" onclick="window.open('https://t.me/zenin1504', '_blank')">
-            Contact on Telegram
-        </div>
-    </div>
-
-    <header>
-        <h1>Hi, I'm Zenin</h1>
-    </header>
-
-    <main>
-        <section>
+        <div class="card">
             <h2>About Me</h2>
             <p>I am a passionate ROM developer, focusing on building custom Android ROMs. I specialize in creating stable and optimized ROMs, aiming to enhance the overall device performance and user experience.</p>
-        </section>
-
-        <section>
+            
+            <hr class="divider">
+            
             <h2>What I Do</h2>
             <p>My work revolves around developing custom Android ROMs for a variety of devices. I focus on performance improvements, stability, and optimization to ensure smooth functionality across supported devices.</p>
-        </section>
+        </div>
 
-        <section>
+        <div class="card">
             <h2>Contact</h2>
-            <p>You can check out my projects and get in touch via my GitHub profile:</p>
-            <p><a href="https://github.com/zenin1504" target="_blank">Visit my GitHub Profile <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="icon" alt="GitHub"></a></p>
-            <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="icon" alt="Telegram"></a></p>
-        </section>
-    </main>
-
-    <script>
-        const menuButton = document.getElementById('githubMenu');
-        const menuPanel = document.getElementById('menuPanel');
-        
-        menuButton.addEventListener('click', function() {
-            this.classList.toggle('active');
-            menuPanel.classList.toggle('open');
+            <p>You can check out my projects and get in touch via:</p>
             
-            // Close menu when clicking outside
-            if (menuPanel.classList.contains('open')) {
-                document.addEventListener('click', closeMenuOutside);
-            } else {
-                document.removeEventListener('click', closeMenuOutside);
-            }
-        });
-        
-        function closeMenuOutside(e) {
-            if (!menuPanel.contains(e.target) && e.target !== menuButton) {
-                menuButton.classList.remove('active');
-                menuPanel.classList.remove('open');
-                document.removeEventListener('click', closeMenuOutside);
-            }
-        }
-    </script>
+            <div class="links">
+                <a href="https://github.com/zenin1504" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="icon" alt="GitHub">
+                    Visit my GitHub Profile
+                </a>
+                <a href="https://t.me/zenin1504" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="icon" alt="Telegram">
+                    Contact me on Telegram
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
