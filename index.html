@@ -1,175 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenin - ROM Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Color Variables */
-        :root {
-            --primary: #3a86ff;
-            --secondary: #8338ec;
-            --bg: #121212;
-            --card-bg: #1e1e1e;
-            --text: #e0e0e0;
-            --text-light: #b0b0b0;
-        }
-
-        /* Base Styles */
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 700px;
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 20px;
         }
-
-        /* Header */
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
+        
         h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #3a86ff;
+            text-align: center;
         }
-
-        /* Section Headings */
+        
         h2 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--primary);
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
+            color: #3a86ff;
         }
-
-        /* Horizontal Divider - GUARANTEED VISIBLE */
-        .divider {
-            display: block;
+        
+        /* THIS IS THE HORIZONTAL LINE - IT WILL SHOW */
+        .line {
             height: 1px;
-            width: 100%;
-            background-color: rgba(58, 134, 255, 0.3);
-            margin: 2rem 0;
-            border: 0;
+            background: #3a86ff;
+            margin: 30px 0;
+            opacity: 0.5;
         }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Text */
-        p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        /* Links */
-        .links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
+        
         a {
-            display: inline-flex;
+            color: #3a86ff;
+            text-decoration: none;
+            display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 400;
-            transition: all 0.2s ease;
-            padding: 0.5rem 0;
+            margin: 10px 0;
         }
-
-        a:hover {
-            color: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        /* Icons - GUARANTEED VISIBLE */
-        .icon {
+        
+        img.icon {
             width: 18px;
             height: 18px;
-            display: inline-block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .links {
-                flex-direction: column;
-                gap: 1rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Hi, I'm Zenin</h1>
-        </header>
-
-        <div class="card">
-            <h2>About Me</h2>
-            <p>I am a passionate ROM developer, focusing on building custom Android ROMs. I specialize in creating stable and optimized ROMs, aiming to enhance the overall device performance and user experience.</p>
-            
-            <!-- Horizontal Divider -->
-            <div class="divider"></div>
-            
-            <h2>What I Do</h2>
-            <p>My work revolves around developing custom Android ROMs for a variety of devices. I focus on performance improvements, stability, and optimization to ensure smooth functionality across supported devices.</p>
-        </div>
-
-        <div class="card">
-            <h2>Contact</h2>
-            <p>You can check out my projects and get in touch via:</p>
-            
-            <div class="links">
-                <!-- GitHub Link with Logo -->
-                <a href="https://github.com/zenin1504" target="_blank">
-                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" 
-                         class="icon" 
-                         alt="GitHub"
-                         onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg'">
-                    Visit my GitHub Profile
-                </a>
-                
-                <!-- Telegram Link with Logo -->
-                <a href="https://t.me/zenin1504" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" 
-                         class="icon" 
-                         alt="Telegram">
-                    Contact me on Telegram
-                </a>
-            </div>
-        </div>
-    </div>
+    <h1>Hi, I'm Zenin</h1>
+    
+    <h2>About Me</h2>
+    <p>I am a passionate ROM developer, focusing on building custom Android ROMs.</p>
+    
+    <!-- THIS IS THE HORIZONTAL LINE -->
+    <div class="line"></div>
+    
+    <h2>What I Do</h2>
+    <p>My work revolves around developing custom Android ROMs for a variety of devices.</p>
+    
+    <div class="line"></div>
+    
+    <h2>Contact</h2>
+    <a href="https://github.com/zenin1504" target="_blank">
+        <!-- THIS IS THE GITHUB LOGO - IT WILL SHOW -->
+        <img class="icon" src="https://github.githubassets.com/favicon.ico" alt="GitHub">
+        Visit my GitHub Profile
+    </a>
+    <a href="https://t.me/zenin1504" target="_blank">
+        <img class="icon" src="https://telegram.org/favicon.ico" alt="Telegram">
+        Contact me on Telegram
+    </a>
 </body>
 </html>
