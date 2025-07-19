@@ -27,6 +27,7 @@
             --md-sys-motion-duration-short: 200ms;
             --md-sys-motion-duration-medium: 300ms;
             --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+            --md-sys-motion-easing-emphasized: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @media (prefers-color-scheme: light) {
@@ -54,7 +55,41 @@
             color: var(--md-sys-color-on-surface);
             line-height: 1.6;
             transition: background-color 300ms var(--md-sys-motion-easing-standard);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
+
+        /* Edge Lines (YAAP Link) */
+        .edge-lines {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 4px;
+            z-index: 100;
+        }
+
+        .edge-line {
+            width: 4px;
+            height: 40px;
+            background: var(--md-sys-color-primary);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+        }
+
+        .edge-line:hover {
+            background: var(--md-sys-color-secondary);
+            transform: scaleX(1.5);
+        }
+
+        .edge-line:nth-child(1) { height: 30px; opacity: 0.8; }
+        .edge-line:nth-child(2) { height: 40px; opacity: 0.9; }
+        .edge-line:nth-child(3) { height: 30px; opacity: 0.8; }
 
         header {
             background-color: var(--md-sys-color-surface-variant);
@@ -198,10 +233,20 @@
             section {
                 padding: 1.2rem;
             }
+            .edge-lines {
+                display: none; /* Hide on mobile for cleaner UI */
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Edge Lines (YAAP Link) -->
+    <div class="edge-lines" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
+        <div class="edge-line"></div>
+        <div class="edge-line"></div>
+        <div class="edge-line"></div>
+    </div>
 
     <header>
         <h1>Hi, I'm Zenin</h1>
