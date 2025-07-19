@@ -22,7 +22,7 @@
             min-height: 100vh;
         }
 
-        /* GitHub-style HAMBURGER MENU LINES (like in file navigation) */
+        /* GitHub-style menu with animation */
         .github-menu {
             position: fixed;
             top: 20px;
@@ -41,22 +41,53 @@
             height: 2px;
             width: 100%;
             background: var(--github-gray);
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .github-menu:hover .menu-line {
             background: var(--github-blue);
         }
 
-        .github-menu:hover .menu-line:nth-child(1) {
+        /* Menu panel that slides in */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: var(--github-bg);
+            border-right: 1px solid rgba(240,246,252,0.1);
+            z-index: 999;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 60px 20px 20px;
+        }
+
+        .menu-panel.open {
+            transform: translateX(300px);
+        }
+
+        .menu-item {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        /* Animation when menu opens */
+        .github-menu.active .menu-line:nth-child(1) {
             transform: translateY(6px) rotate(45deg);
         }
 
-        .github-menu:hover .menu-line:nth-child(2) {
+        .github-menu.active .menu-line:nth-child(2) {
             opacity: 0;
         }
 
-        .github-menu:hover .menu-line:nth-child(3) {
+        .github-menu.active .menu-line:nth-child(3) {
             transform: translateY(-6px) rotate(-45deg);
         }
 
@@ -64,7 +95,7 @@
         header {
             text-align: center;
             padding: 2rem;
-            padding-top: 4rem; /* Extra space for menu */
+            padding-top: 4rem;
         }
 
         h1 {
@@ -118,11 +149,24 @@
 </head>
 <body>
 
-    <!-- GitHub-style HAMBURGER MENU LINES (left side) -->
-    <div class="github-menu" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
+    <!-- GitHub-style menu with animation -->
+    <div class="github-menu" id="githubMenu">
         <div class="menu-line"></div>
         <div class="menu-line"></div>
         <div class="menu-line"></div>
+    </div>
+
+    <!-- Menu panel that slides in -->
+    <div class="menu-panel" id="menuPanel">
+        <div class="menu-item" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
+            View YAAP Project
+        </div>
+        <div class="menu-item" onclick="window.open('https://github.com/zenin1504', '_blank')">
+            My GitHub Profile
+        </div>
+        <div class="menu-item" onclick="window.open('https://t.me/zenin1504', '_blank')">
+            Contact on Telegram
+        </div>
     </div>
 
     <header>
@@ -147,5 +191,30 @@
             <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="icon" alt="Telegram"></a></p>
         </section>
     </main>
+
+    <script>
+        const menuButton = document.getElementById('githubMenu');
+        const menuPanel = document.getElementById('menuPanel');
+        
+        menuButton.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menuPanel.classList.toggle('open');
+            
+            // Close menu when clicking outside
+            if (menuPanel.classList.contains('open')) {
+                document.addEventListener('click', closeMenuOutside);
+            } else {
+                document.removeEventListener('click', closeMenuOutside);
+            }
+        });
+        
+        function closeMenuOutside(e) {
+            if (!menuPanel.contains(e.target) && e.target !== menuButton) {
+                menuButton.classList.remove('active');
+                menuPanel.classList.remove('open');
+                document.removeEventListener('click', closeMenuOutside);
+            }
+        }
+    </script>
 </body>
 </html>
