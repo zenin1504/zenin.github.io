@@ -20,48 +20,51 @@
             background-color: var(--github-bg);
             color: var(--github-text);
             min-height: 100vh;
-            position: relative;
         }
 
-        /* GitHub-style Edge Lines - GUARANTEED TO APPEAR */
-        .edge-lines {
+        /* GitHub-style HAMBURGER MENU LINES (like in file navigation) */
+        .github-menu {
             position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
+            top: 20px;
+            left: 20px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            padding: 8px 4px;
-            z-index: 1000;
-            cursor: pointer;
-            background: rgba(88, 166, 255, 0.1);
-            border-radius: 6px 0 0 6px;
+            justify-content: space-between;
+            padding: 6px;
         }
 
-        .edge-line {
-            width: 2px;
+        .menu-line {
+            height: 2px;
+            width: 100%;
             background: var(--github-gray);
-            border-radius: 1px;
             transition: all 0.2s ease;
         }
 
-        .edge-line:nth-child(1) { height: 14px; }
-        .edge-line:nth-child(2) { height: 18px; }
-        .edge-line:nth-child(3) { height: 14px; }
-
-        .edge-lines:hover .edge-line {
+        .github-menu:hover .menu-line {
             background: var(--github-blue);
-            width: 3px;
         }
 
-        .edge-lines:hover .edge-line:nth-child(1) { height: 16px; }
-        .edge-lines:hover .edge-line:nth-child(2) { height: 24px; }
-        .edge-lines:hover .edge-line:nth-child(3) { height: 16px; }
+        .github-menu:hover .menu-line:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
 
+        .github-menu:hover .menu-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .github-menu:hover .menu-line:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        /* Rest of your content */
         header {
             text-align: center;
             padding: 2rem;
+            padding-top: 4rem; /* Extra space for menu */
         }
 
         h1 {
@@ -107,9 +110,6 @@
         }
 
         @media (max-width: 768px) {
-            .edge-lines {
-                display: none;
-            }
             h1 {
                 font-size: 2rem;
             }
@@ -118,11 +118,11 @@
 </head>
 <body>
 
-    <!-- GitHub-style Edge Lines - GUARANTEED VISIBLE -->
-    <div class="edge-lines" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
-        <div class="edge-line"></div>
-        <div class="edge-line"></div>
-        <div class="edge-line"></div>
+    <!-- GitHub-style HAMBURGER MENU LINES (left side) -->
+    <div class="github-menu" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
     </div>
 
     <header>
@@ -147,14 +147,5 @@
             <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="icon" alt="Telegram"></a></p>
         </section>
     </main>
-
-    <script>
-        // Force edge lines to be visible
-        document.addEventListener('DOMContentLoaded', function() {
-            const edgeLines = document.querySelector('.edge-lines');
-            edgeLines.style.display = 'flex';
-            console.log('Edge lines should now be visible');
-        });
-    </script>
 </body>
 </html>
