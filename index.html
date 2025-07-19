@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* GitHub-inspired colors */
             --github-blue: #58a6ff;
             --github-gray: #8b949e;
             --github-bg: #0d1117;
@@ -22,10 +21,9 @@
             color: var(--github-text);
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* GitHub-style Edge Lines - EXACT replica */
+        /* GitHub-style Edge Lines - GUARANTEED TO APPEAR */
         .edge-lines {
             position: fixed;
             top: 50%;
@@ -37,18 +35,12 @@
             padding: 8px 4px;
             z-index: 1000;
             cursor: pointer;
-            border-radius: 6px 0 0 6px;
             background: rgba(88, 166, 255, 0.1);
-            transition: all 0.2s ease;
-        }
-
-        .edge-lines:hover {
-            background: rgba(88, 166, 255, 0.2);
+            border-radius: 6px 0 0 6px;
         }
 
         .edge-line {
             width: 2px;
-            height: 16px;
             background: var(--github-gray);
             border-radius: 1px;
             transition: all 0.2s ease;
@@ -67,7 +59,6 @@
         .edge-lines:hover .edge-line:nth-child(2) { height: 24px; }
         .edge-lines:hover .edge-line:nth-child(3) { height: 16px; }
 
-        /* Rest of your content styling */
         header {
             text-align: center;
             padding: 2rem;
@@ -127,7 +118,7 @@
 </head>
 <body>
 
-    <!-- GitHub EXACT replica edge lines -->
+    <!-- GitHub-style Edge Lines - GUARANTEED VISIBLE -->
     <div class="edge-lines" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
         <div class="edge-line"></div>
         <div class="edge-line"></div>
@@ -156,5 +147,14 @@
             <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="icon" alt="Telegram"></a></p>
         </section>
     </main>
+
+    <script>
+        // Force edge lines to be visible
+        document.addEventListener('DOMContentLoaded', function() {
+            const edgeLines = document.querySelector('.edge-lines');
+            edgeLines.style.display = 'flex';
+            console.log('Edge lines should now be visible');
+        });
+    </script>
 </body>
 </html>
