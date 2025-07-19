@@ -4,84 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zenin - ROM Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Material 3 Color Tokens (Dark Mode Default) */
+            --md-sys-color-primary: #4e9af1;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-primary-container: #1a365f;
+            --md-sys-color-secondary: #2dd4bf;
+            --md-sys-color-on-secondary: #000000;
+            --md-sys-color-secondary-container: #1a4a43;
+            --md-sys-color-surface: #1d1d1d;
+            --md-sys-color-surface-variant: #2d2d2d;
+            --md-sys-color-on-surface: #e0e0e0;
+            --md-sys-color-on-surface-variant: #b3b3b3;
+            --md-sys-color-outline: #5a5a5a;
+            --md-sys-color-shadow: #000000;
+            --md-sys-elevation-1: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --md-sys-elevation-2: 0 4px 8px rgba(0, 0, 0, 0.2);
+            --md-sys-elevation-3: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --md-sys-shape-corner-medium: 12px;
+            --md-sys-motion-duration-short: 200ms;
+            --md-sys-motion-duration-medium: 300ms;
+            --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --md-sys-color-primary: #1a73e8;
+                --md-sys-color-on-primary: #ffffff;
+                --md-sys-color-primary-container: #d0e3ff;
+                --md-sys-color-secondary: #00bcd4;
+                --md-sys-color-on-secondary: #ffffff;
+                --md-sys-color-secondary-container: #b3e5fc;
+                --md-sys-color-surface: #ffffff;
+                --md-sys-color-surface-variant: #f5f5f5;
+                --md-sys-color-on-surface: #1d1d1d;
+                --md-sys-color-on-surface-variant: #5a5a5a;
+                --md-sys-color-outline: #cccccc;
+                --md-sys-color-shadow: #00000020;
+            }
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto Flex', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            line-height: 1.6;
+            transition: background-color 300ms var(--md-sys-motion-easing-standard);
         }
+
         header {
-            background-color: #1f1f1f;
-            color: #ffffff;
-            padding: 20px;
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface);
+            padding: 2rem 1rem;
             text-align: center;
-            animation: fadeIn 1s ease-out;
+            box-shadow: var(--md-sys-elevation-1);
+            animation: fadeInDown 500ms var(--md-sys-motion-easing-standard);
         }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
         section {
-            padding: 20px;
-            margin: 0 15px;
+            background-color: var(--md-sys-color-surface-variant);
+            border-radius: var(--md-sys-shape-corner-medium);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--md-sys-elevation-1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 500ms var(--md-sys-motion-easing-standard) forwards;
         }
-        h1, h2 {
-            font-size: 24px;
-            color: #ffffff;
-            animation: slideIn 0.8s ease-out;
+
+        section:nth-child(1) { animation-delay: 100ms; }
+        section:nth-child(2) { animation-delay: 200ms; }
+        section:nth-child(3) { animation-delay: 300ms; }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--md-sys-color-primary);
+            margin-top: 0;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+            border-radius: 3px;
+        }
+
         p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #e0e0e0;
-            animation: fadeIn 1.2s ease-out;
+            font-size: 1rem;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 1.5rem;
         }
+
         a {
-            color: #4e9af1;
+            color: var(--md-sys-color-primary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-weight: 500;
+            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.5rem 0;
+            position: relative;
         }
+
         a:hover {
-            text-decoration: underline;
-            transform: translateY(-2px);
-            color: #6ab0f2;
+            color: var(--md-sys-color-secondary);
         }
+
+        /* Ripple Effect */
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--md-sys-color-secondary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         .telegram-logo, .github-logo {
-            width: 30px;
-            height: 30px;
-            vertical-align: middle;
-            margin-left: 10px;
-            transition: transform 0.3s ease;
+            width: 24px;
+            height: 24px;
+            transition: transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-standard);
         }
+
         a:hover .telegram-logo, a:hover .github-logo {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.2) rotate(10deg);
         }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { 
+        @keyframes fadeInDown {
+            from {
                 opacity: 0;
                 transform: translateY(-20px);
             }
-            to { 
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Section animations with delay */
-        section h2 {
-            animation-delay: 0.2s;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        section p {
-            animation-delay: 0.4s;
-        }
-        section a {
-            animation-delay: 0.6s;
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -91,22 +207,26 @@
         <h1>Hi, I'm Zenin</h1>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>I am a passionate ROM developer, focusing on building custom Android ROMs. I specialize in creating stable and optimized ROMs, aiming to enhance the overall device performance and user experience.</p>
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p>I am a passionate ROM developer, focusing on building custom Android ROMs. I specialize in creating stable and optimized ROMs, aiming to enhance the overall device performance and user experience.</p>
+        </section>
 
-        <h2>What I Do</h2>
-        <p>My work revolves around developing custom Android ROMs for a variety of devices. I focus on performance improvements, stability, and optimization to ensure smooth functionality across supported devices.</p>
+        <section>
+            <h2>What I Do</h2>
+            <p>My work revolves around developing custom Android ROMs for a variety of devices. I focus on performance improvements, stability, and optimization to ensure smooth functionality across supported devices.</p>
+        </section>
 
-        <h2>Contact</h2>
-        <p>You can check out my projects and get in touch via my GitHub profile:</p>
-        <p><a href="https://github.com/zenin1504" target="_blank">Visit my GitHub Profile</a> 
-           <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="github-logo" alt="GitHub Logo"></p>
+        <section>
+            <h2>Contact</h2>
+            <p>You can check out my projects and get in touch via my GitHub profile:</p>
+            <p><a href="https://github.com/zenin1504" target="_blank">Visit my GitHub Profile <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" class="github-logo" alt="GitHub Logo"></a></p>
 
-        <h2>Connect with me on Telegram</h2>
-        <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram</a> 
-           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="telegram-logo" alt="Telegram Logo"></p>
-    </section>
+            <p>Connect with me on Telegram:</p>
+            <p><a href="https://t.me/zenin1504" target="_blank">Contact me on Telegram <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1200px-Telegram_logo.svg.png" class="telegram-logo" alt="Telegram Logo"></a></p>
+        </section>
+    </main>
 
 </body>
 </html>
