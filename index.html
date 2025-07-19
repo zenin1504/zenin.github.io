@@ -7,25 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Material 3 Color Tokens */
-            --md-primary: #4e9af1;
-            --md-secondary: #2dd4bf;
-            --md-surface: #1d1d1d;
-            --md-on-surface: #e0e0e0;
+            /* GitHub-inspired colors */
+            --github-blue: #58a6ff;
+            --github-gray: #8b949e;
+            --github-bg: #0d1117;
+            --github-text: #c9d1d9;
         }
 
         body {
             font-family: 'Roboto Flex', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--md-surface);
-            color: var(--md-on-surface);
+            background-color: var(--github-bg);
+            color: var(--github-text);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* GitHub-style Edge Lines */
+        /* GitHub-style Edge Lines - EXACT replica */
         .edge-lines {
             position: fixed;
             top: 50%;
@@ -34,66 +34,48 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            padding: 10px 6px;
+            padding: 8px 4px;
             z-index: 1000;
             cursor: pointer;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 0.3s forwards;
+            border-radius: 6px 0 0 6px;
+            background: rgba(88, 166, 255, 0.1);
+            transition: all 0.2s ease;
         }
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        .edge-lines:hover {
+            background: rgba(88, 166, 255, 0.2);
         }
 
         .edge-line {
-            width: 3px;
-            height: 0;
-            background: var(--md-primary);
-            border-radius: 3px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-origin: center right;
+            width: 2px;
+            height: 16px;
+            background: var(--github-gray);
+            border-radius: 1px;
+            transition: all 0.2s ease;
         }
 
-        .edge-line:nth-child(1) { 
-            animation: growLine 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; 
-        }
-        .edge-line:nth-child(2) { 
-            animation: growLine 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards; 
-        }
-        .edge-line:nth-child(3) { 
-            animation: growLine 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; 
-        }
-
-        @keyframes growLine {
-            to { height: 40px; }
-        }
+        .edge-line:nth-child(1) { height: 14px; }
+        .edge-line:nth-child(2) { height: 18px; }
+        .edge-line:nth-child(3) { height: 14px; }
 
         .edge-lines:hover .edge-line {
-            background: var(--md-secondary);
-            width: 6px;
+            background: var(--github-blue);
+            width: 3px;
         }
 
-        .edge-lines:hover .edge-line:nth-child(1) { height: 30px; }
-        .edge-lines:hover .edge-line:nth-child(2) { height: 50px; }
-        .edge-lines:hover .edge-line:nth-child(3) { height: 30px; }
+        .edge-lines:hover .edge-line:nth-child(1) { height: 16px; }
+        .edge-lines:hover .edge-line:nth-child(2) { height: 24px; }
+        .edge-lines:hover .edge-line:nth-child(3) { height: 16px; }
 
+        /* Rest of your content styling */
         header {
             text-align: center;
             padding: 2rem;
-            animation: fadeInDown 0.6s ease-out;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         h1 {
             font-size: 2.5rem;
-            background: linear-gradient(90deg, var(--md-primary), var(--md-secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--github-text);
             margin: 0;
         }
 
@@ -107,50 +89,30 @@
             margin-bottom: 2rem;
             padding: 1.5rem;
             background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
+            border-radius: 6px;
+            border: 1px solid rgba(240,246,252,0.1);
         }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        section:nth-child(1) { animation-delay: 0.2s; }
-        section:nth-child(2) { animation-delay: 0.4s; }
-        section:nth-child(3) { animation-delay: 0.6s; }
 
         h2 {
-            color: var(--md-primary);
+            color: var(--github-blue);
             margin-top: 0;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-        }
-
         a {
-            color: var(--md-primary);
+            color: var(--github-blue);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
+            gap: 6px;
         }
 
         a:hover {
-            color: var(--md-secondary);
+            text-decoration: underline;
         }
 
         .icon {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        a:hover .icon {
-            transform: scale(1.2) rotate(5deg);
+            width: 16px;
+            height: 16px;
         }
 
         @media (max-width: 768px) {
@@ -165,7 +127,7 @@
 </head>
 <body>
 
-    <!-- GitHub-style Animated Edge Lines -->
+    <!-- GitHub EXACT replica edge lines -->
     <div class="edge-lines" onclick="window.open('https://github.com/Neon-Duchamp/YAAP', '_blank')">
         <div class="edge-line"></div>
         <div class="edge-line"></div>
